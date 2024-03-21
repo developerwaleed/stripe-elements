@@ -18,11 +18,10 @@ const paymentIntentHandler = async (
     return NextResponse.json({ error: "Method Not Allowed" }, { status: 405 });
   }
   const { items }: any = req.body;
-  console.log("items=", items);
 
   const paymentIntent = await stripe.paymentIntents.create({
     amount: calculateOrderAmount(items),
-    currency: "eur",
+    currency: "usd",
     automatic_payment_methods: {
       enabled: true,
     },
